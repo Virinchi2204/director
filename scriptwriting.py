@@ -43,7 +43,7 @@ model.add(Dense(units=vocab_size, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # train model
-model.fit(inputs_padded, outputs_categorical, epochs=10, batch_size=64)
+model.fit(inputs_padded, outputs_categorical, epochs=3, batch_size=64)
 
 # generate new text
 seed_text = "Batman"
@@ -70,40 +70,3 @@ print(seed_text)
 
 
 
-"""
-import os
-import openai
-
-# Set OpenAI API key
-openai.api_key = "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"
-
-# Define the file paths for the three scripts
-file_paths = ["Scripts/batman_begins.txt", "Scripts/tdk.txt", "Scripts/tdk_returns.txt"]
-
-# Read the contents of each script file
-script_text = ""
-for file_path in file_paths:
-    with open(file_path, "r", encoding="utf-8") as file:
-        script_text += file.read()
-
-# Get user prompt
-prompt = input("Enter a prompt for the new script: ")
-
-# Generate a new script based on the provided scripts and the user prompt
-response = openai.Completion.create(
-    engine="text-davinci-003",
-    prompt=script_text + prompt,
-    max_tokens=4000,
-    n=1,
-    stop=None,
-    temperature=0.5
-)
-
-# Print and save the generated script
-generated_script = response.choices[0].text
-print(generated_script)
-
-# Save the generated script to the Scripts folder
-with open("Scripts/generated_script.txt", "w", encoding="utf-8") as file:
-    file.write(generated_script)
-"""

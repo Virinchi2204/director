@@ -1,5 +1,5 @@
 import speech_recognition as sr
-import openai 
+import openai
 import pyttsx3
 import os
 openai.api_key= os.environ["OPENAI_API_KEY"]#"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"
